@@ -1,62 +1,11 @@
 <?xml version="1.0"?>
-<project default="main"
-    xmlns:deploy="deploy"
-    xmlns:maven="jelly:maven"
-    xmlns:ant="jelly:ant">
+<project default="main">
 
-    <postGoal name="java:compile">
-        <ant:copy file="${basedir}/project.properties"
-            todir="${maven.build.dest}"/>
-        <ant:copy file="${basedir}/project.xml"
-            todir="${maven.build.dest}"/>
-    </postGoal>
+    <goal name="main" prereqs="build"/>
 
-    <postGoal name="install">
-        <maven:maven
-            descriptor="${basedir}/src/plugin-test/project.xml"
-            goals="main"
-            ignoreFailures="false"/>
-    </postGoal>
+    <goal name="build" prereqs="jar:install"/>
 
-    <postGoal name="clean:clean">
-        <maven:maven
-            descriptor="${basedir}/src/plugin-test/project.xml"
-            goals="clean:clean"
-            ignoreFailures="false"/>
-    </postGoal>
+    <goal name="deploy" prereqs="jar:deploy"/>
 
-    <goal name="main">
-        <attainGoal name="build"/>
-    </goal>
-
-    <goal name="build">
-        <attainGoal name="install"/>
-    </goal>
-
-    <goal name="setupPlugin" prereqs="jar:jar">
-        <ant:property name="artifact"
-            value="maven-metaclass-plugin-${pom.currentVersion}.jar"/>
-        <ant:echo message="Artifact: ${artifact}"/>
-        <ant:copy file="${maven.build.dir}/${maven.final.name}.jar"
-            toFile="${maven.build.dir}/${artifact}"/>
-    </goal>
-
-    <goal name="deploy" prereqs="jar:deploy,setupPlugin,site:deploy">
-        <deploy:artifact
-            artifact="${maven.build.dir}/${artifact}"
-            type="plugins"
-            assureDirectoryCommand="mkdir -p"
-            siteCommand="cd @deployDirectory@; chmod g+w ${artifact}; chgrp ${maven.remote.group} ${artifact}"/>
-    </goal>
-
-    <goal name="install" prereqs="jar:install,setupPlugin">
-        <ant:copy file="${maven.build.dir}/${artifact}"
-            todir="${maven.repo.local}/${pom.groupId}/plugins"/>
-        <ant:delete>
-            <ant:fileset dir="${maven.home}/plugins">
-                <ant:include name="${pom.artifactID}-*"/>
-            </ant:fileset>
-        </ant:delete>
-    </goal>
 
 </project>

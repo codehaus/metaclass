@@ -1,12 +1,8 @@
 <?xml version="1.0"?>
 <project>
-    <extend>${basedir}/../../tools/maven/project.xml</extend>
+    <extend>${basedir}/../project.xml</extend>
     <name>MetaClass</name>
-    <id>spice-metaclass</id>
-    <!-- when version is updated then update version in the plugin-test
-       project descriptor -->
-    <currentVersion>1.0-rc3-dev</currentVersion>
-    <inceptionYear>2003</inceptionYear>
+    <artifactId>metaclass-runtime</artifactId>
 
     <shortDescription>Provides runtime access to attributes</shortDescription>
 
@@ -15,49 +11,28 @@
         javadoc format.
     </description>
 
-    <versions>
-        <version>
-            <id>1.0-rc1</id>
-            <name>1.0-rc1</name>
-            <tag>METACLASS-1_0-rc1-tag</tag>
-        </version>
-        <version>
-            <id>1.0-rc2</id>
-            <name>1.0-rc2</name>
-            <tag>METACLASS-1_0-rc2-tag</tag>
-        </version>
-    </versions>
+    <build>
+        <sourceDirectory>src/java</sourceDirectory>
+        <unitTestSourceDirectory>src/test</unitTestSourceDirectory>
 
-    <developers>
-        <developer>
-            <name>Peter Donald</name>
-            <id>donaldp</id>
-            
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+10</timezone>
-        </developer>
-        <developer>
-            <name>Doug Hagan</name>
-            <id>dougecko</id>
-            <email>doug@stocksoftware.com.au</email>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+10</timezone>
-        </developer>
-    </developers>
+        <unitTest>
+            <resource>
+                <directory>${basedir}/src/test</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+
+            <includes>
+                <include>**/*TestCase*</include>
+            </includes>
+            <excludes>
+                <exclude>**/Abstract*</exclude>
+            </excludes>
+        </unitTest>
+    </build>
 
     <dependencies>
-        <dependency>
-            <id>qdox</id>
-            <version>1.3</version>
-        </dependency>
-        <dependency>
-            <id>ant</id>
-            <version>1.5.2</version>
-        </dependency>
         <dependency>
             <groupId>asm</groupId>
             <artifactId>asm</artifactId>

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<project>
+    <pomVersion>3</pomVersion>
+
+    <organization>
+        <name>Codehaus</name>
+        <url>http://codehaus.org/</url>
+        <logo>http://codehaus.org/codehaus-small.gif</logo>
+    </organization>
+    <inceptionYear>2003</inceptionYear>
+
+    <groupId>metaclass</groupId>
+    <currentVersion>1.0-rc3-dev</currentVersion>
+    <package>org.codehaus.metaclass</package>
+
+    <issueTrackingUrl>http://jira.codehaus.org/secure/BrowseProject.jspa?id=10290</issueTrackingUrl>
+    <url>http://metaclass.codehaus.org/</url>
+    <logo>/images/metaclass-logo.png</logo>
+
+    <distributionDirectory>/www/dist.codehaus.org</distributionDirectory>
+    <distributionSite>codehaus.org</distributionSite>
+    <siteAddress>beaver.codehaus.org</siteAddress>
+    <siteDirectory>/home/projects/metaclass/public_html</siteDirectory>
+
+    <repository>
+        <connection>scm:svn://svn.metaclass.codehaus.org/metaclass/scm</connection>
+        <url>http://svn.metaclass.codehaus.org</url>
+    </repository>
+
+<!--
+    <versions>
+        <version>
+            <id>1.1-dev</id>
+            <name>1.1-dev</name>
+            <tag>HEAD</tag>
+        </version>
+    </versions>
+-->
+
+    <mailingLists>
+        <mailingList>
+            <name>MetaClass Dev</name>
+            <subscribe>dev-subscribe@metaclass.codehaus.org</subscribe>
+            <unsubscribe>dev-unsubscribe@metaclass.codehaus.org</unsubscribe>
+        </mailingList>
+<!--
+        <mailingList>
+            <name>JContainer Commits</name>
+            <subscribe>http://lists.codehaus.org/mailman/listinfo/jcontainer-commits</subscribe>
+            <unsubscribe>http://lists.codehaus.org/mailman/listinfo/jcontainer-commits</unsubscribe>
+            <archive>http://lists.codehaus.org/pipermail/jcontainer-commits</archive>
+        </mailingList>
+-->
+    </mailingLists>
+
+    <developers>
+        <developer>
+            <name>Peter Donald</name>
+            <id>pdonald</id>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+10</timezone>
+        </developer>
+        <developer>
+            <name>Doug Hagan</name>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+10</timezone>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The MetaClass Software License, Version 1.1</name>
+            <url>http://svn.metaclass.codehaus.org/viewcvs.cgi/*checkout*/trunk/LICENSE.txt?root=metaclass</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <reports>
+        <report>maven-jdepend-plugin</report>
+        <report>maven-checkstyle-plugin</report>
+        <report>maven-javadoc-plugin</report>
+        <report>maven-jxr-plugin</report>
+        <report>maven-junit-report-plugin</report>
+        <report>maven-license-plugin</report>
+        <report>maven-clover-plugin</report>
+    </reports>
+
+</project>
