@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>MetaClass</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="MetaClass">
+            <p>
+                MetaClass supports runtime access to metadata associated with program elements
+                or artefacts. The program elements include packages, classes, methods and fields
+                and each metadata element is referred to as an attribute.
+            </p>
+            <p>
+                The attributes are usually specified in the java source files as javadoc
+                markup. The source file is then processed and the metadata is compiled into
+                descriptors that MetaClass is capable of reading. These descriptors are then
+                loaded at runtime to provide metadata about the program elements.
+            </p>
+        </section>
+        <section name="Getting Started">
+            <p>
+                To get started using MetaClass the developer should first look at the
+                <a href="model.html">Attribute Model</a> description to see what type
+                of metadata is stored by MetaClass. The developer then needs to markup
+                classes and <a href="precompile.html">pre-compile</a> the attribute
+                metadata before they can access the metadata at
+                <a href="runtime.html">runtime</a>.
+            </p>
+            <p>
+                After the developer has mastered the common uses-cases of MetaClass they
+                can move on to more advanced usages such as
+                <a href="interception.html">filtering and augmenting</a> metadata
+                during the pre-compilation stage, loading the metadata from
+                <a href="accessor.html">alternative sources</a> and
+                <a href="integration.html">integrating</a> MetaClass into a java container.
+            </p>
+        </section>
+    </body>
+
+</document>

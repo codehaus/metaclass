@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <id>test-metaclass-tools-plugin</id>
+    <name>Test project for MetaClass Tools Plugin</name>
+
+    <build>
+        <sourceDirectory>src/java</sourceDirectory>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>spice</groupId>
+            <artifactId>spice-metaclass-plugin</artifactId>
+            <version>1.0-rc3-dev</version>
+            <type>plugin</type>
+        </dependency>
+    </dependencies>
+
+</project>

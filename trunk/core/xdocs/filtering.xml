@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>Pre-Compilation Filtering</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                MetaClass provides mechanisms via which users can selectively
+                filter out JavaClass objects so that they will not be processed
+                to produce MetaClass metadata files.
+            </p>
+        </section>
+        <section name="My First Interceptor">
+            <p>
+                All filters implement the
+                <tt>org.realityforge.metaclass.tools.compiler.JavaClassFilter</tt>
+                interface. Consider the situation where a developer only wants to
+                process JavaClass objects that have the doclet tag "@dna.component"
+                declared at the class level. All other classes should be skipped
+                as they are not used by the application and only increase the size
+                of the generated metadata. The following source code performs
+                that filtering.
+            </p>
+            <source><![CDATA[
+public class NonDNAComponentFilter
+    implements JavaClassFilter
+{
+    public JavaClass filterClass( JavaClass javaClass )
+    {
+        if( null != javaClass.getTagByName( "dna.component" ) )
+        {
+            return javaClass;
+        }
+        else
+        {
+            return null;
+        }
+    }
+}
+]]></source>
+        </section>
+        <section name="Using the Filter">
+            <p>
+                After the developer has written the filter they have to
+                get the ant task to use the interceptor. This is done by adding
+                a child element &lt;filter/&gt; into the task. This element
+                has one attribute indicating the name of the filter class
+                to use and contains a child &lt;classpath/&gt; element that defines
+                where the .class files for filter are loaded from. See below
+                for an example of how to use the above filter. Any number of
+                Filters can be added and each filter will be invoked
+                in turn until one returns null or until there are no
+                more filter left.
+            </p>
+            <source><![CDATA[
+<metaclassGen destDir="target/classes">
+    <fileset dir="src/java"/>
+    <filter name="example.filter.NonDNAComponentFilter">
+        <classpath>
+            <pathelement location="myFilter.jar"/>
+        </classpath>
+    </filter>
+</metaclassGen>
+]]></source>
+        </section>
+    </body>
+
+</document>
