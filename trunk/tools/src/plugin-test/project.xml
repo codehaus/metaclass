@@ -12,7 +12,7 @@
         <dependency>
             <groupId>metaclass</groupId>
             <artifactId>metaclass-tools</artifactId>
-            <version>1.1-rc3</version>
+            <version>1.1-rc4-dev</version>
             <type>plugin</type>
         </dependency>
     </dependencies>
