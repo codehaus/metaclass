@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>Pre-Compilation</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                Until JDK1.5 there will not be any built-in JDK support for
+                compiling attributes into java .class files. The developer
+                thus needs to associate metadata with the java classes via
+                some other mechanism. The easiest mechanism is to post-process
+                the java source files and extract the JavaDocs as metadata.
+                MetaClass has a custom Ant task to do this for the developer.
+            </p>
+        </section>
+
+        <section name="The JavaDoc Format">
+            <p>
+                The MetaClass Attributes compiler accepts javadocs in standard
+                format. As discussed in the <a href="model.html">Attribute Model</a>
+                document, attributes in MetaClass can either have parameters or
+                string content.
+            </p>
+            <p>
+                For the MetaClass compiler to recognize a javadoc tag as an
+                attribute with parameters then the JavaDoc tag must be formatted
+                according to the following rules.
+            </p>
+            <ul>
+               <li>The tag must contain a name a a number of key=value pairs.</li>
+               <li>The key=value pairs must be surrounded by whitespace.</li>
+               <li>There must be no space between the key and the '=' character
+                   or the '=' character and the value.</li>
+               <li>Each value must be surrounded by '"' characters.</li>
+               <li>The text for the Javadoc excluding the name must match the
+                   regular expression (in Perl Format);
+                   <tt>^[ \t\r\n]*([ \t\r\n]+[a-zA-Z\_][a-zA-Z\.\:0-9\_]*=\"[^\"]*\")+[ \t\r\n]*$</tt>
+               </li>
+            </ul>
+            <p>
+                If a JavaDoc tag does not satisfy the above rules then it is treated
+                like an Attribute that contains text content. The following are all
+                JavaDoc tags that produce attributes with parameters.
+            </p>
+<source><![CDATA[
+/**
+ * @phoenix:entry key="mBeanServer" type="javax.management.MBeanServer"
+ * @shuriken_component ref.id="1234"
+ * @dna.service type="MyService"
+ * @dna.service type="MyService"
+ *    doc:displayString="Service Required to do Magic"
+ */
+]]></source>
+            <p>
+                The following JavaDoc tags that produce attributes with value
+                as they dont match the pattern.
+            </p>
+<source><![CDATA[
+/**
+ * @phoenix:entry key="Missing ending talky mark
+ *
+ * Next tag has space between key and '=' sign
+ * @shuriken_component ref.id ="1234"
+ *
+ * @param myParam MyParameter used for X
+ */
+]]></source>
+        </section>
+        <section name="Ant Task">
+            <p>
+                To use the ant task the user has to make sure that
+                the metaclass and qdox jars are present and included
+                when defining the Ant task. The following gives an
+                example usage of the generator class. The task will
+                scan all the source files in the directory
+                <tt>src/java</tt> and generate binary descriptors for
+                each source file in <tt>target/classes</tt>
+            </p>
+<source><![CDATA[
+<!-- define the custom task -->
+<taskdef name="metaclassGen"
+    classname="org.codehaus.metaclass.tools.tasks.GenerateClassDescriptorsTask">
+    <classpath>
+        <pathelement location="metaclass-runtime-1.0.jar"/>
+        <pathelement location="qdox-1.1.jar"/>
+    </classpath>
+</taskdef>
+
+<metaclassGen destDir="target/classes" namespaceTagsOnly="false">
+    <fileset dir="src/java"/>
+</metaclassGen>
+]]></source>
+        </section>
+    </body>
+
+</document>

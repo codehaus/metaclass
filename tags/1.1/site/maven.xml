@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project default="build"
+    xmlns:ant="jelly:ant">
+
+    <goal name="build" prereqs="site:generate"/>
+
+    <goal name="deploy" prereqs="site:deploy"/>
+
+    <preGoal name="build:start">
+        <attainGoal name="aggregate-components"/>
+    </preGoal>
+
+    <!--
+       Build a single site documentation for whole set of MetaClass projects.
+    -->
+    <goal name="aggregate-components">
+        <ant:echo message="Aggregate components source"/>
+        <ant:mkdir dir="${maven.build.dir}/aggregate-src/java"/>
+        <ant:copy todir="${maven.build.dir}/aggregate-src/java">
+            <ant:fileset dir="${basedir}/../runtime/src/java"/>
+            <ant:fileset dir="${basedir}/../tools/src/java"/>
+        </ant:copy>
+        <ant:mkdir dir="${maven.build.dir}/aggregate-src/test"/>
+        <ant:copy todir="${maven.build.dir}/aggregate-src/test">
+            <ant:fileset dir="${basedir}/../runtime/src/test"/>
+            <ant:fileset dir="${basedir}/../tools/src/test"/>
+        </ant:copy>
+    </goal>
+
+</project>

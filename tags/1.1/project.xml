@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<project>
+    <pomVersion>3</pomVersion>
+
+    <organization>
+        <name>Codehaus</name>
+        <url>http://codehaus.org/</url>
+        <logo>http://codehaus.org/codehaus-small.gif</logo>
+    </organization>
+    <inceptionYear>2003</inceptionYear>
+
+    <groupId>metaclass</groupId>
+    <!--
+      Have to bump version in metaclass-tools and plugin-test if this changes 
+    -->
+    <currentVersion>1.1</currentVersion>
+    <package>org.codehaus.metaclass</package>
+
+    <issueTrackingUrl>http://jira.codehaus.org/secure/BrowseProject.jspa?id=10290</issueTrackingUrl>
+    <url>http://metaclass.codehaus.org/</url>
+    <logo>/images/logo.gif</logo>
+
+    <distributionDirectory>/home/projects/metaclass/dist</distributionDirectory>
+    <distributionSite>beaver.codehaus.org</distributionSite>
+    <siteAddress>beaver.codehaus.org</siteAddress>
+    <siteDirectory>/home/projects/metaclass/public_html</siteDirectory>
+
+    <repository>
+        <connection>scm:svn://svn.metaclass.codehaus.org/metaclass/scm</connection>
+        <url>http://svn.metaclass.codehaus.org</url>
+    </repository>
+
+    <versions>
+        <version>
+            <id>1.1</id>
+            <name>1.1</name>
+            <tag>1.1</tag>
+        </version>
+        <version>
+            <id>1.1-rc3</id>
+            <name>1.1-rc3</name>
+            <tag>1.1-rc3</tag>
+        </version>
+    </versions>
+
+    <mailingLists>
+        <mailingList>
+            <name>MetaClass Dev</name>
+            <subscribe>dev-subscribe@metaclass.codehaus.org</subscribe>
+            <unsubscribe>dev-unsubscribe@metaclass.codehaus.org</unsubscribe>
+        </mailingList>
+        <mailingList>
+            <name>MetaClass Commits</name>
+            <subscribe>scm-subscribe@metaclass.codehaus.org</subscribe>
+            <unsubscribe>scm-unsubscribe@metaclass.codehaus.org</unsubscribe>
+        </mailingList>
+    </mailingLists>
+
+    <developers>
+        <developer>
+            <name>Peter Donald</name>
+            <id>pdonald</id>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+10</timezone>
+        </developer>
+        <developer>
+            <name>Doug Hagan</name>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+10</timezone>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The MetaClass Software License, Version 1.1</name>
+            <url>http://svn.metaclass.codehaus.org/viewcvs.cgi/*checkout*/trunk/LICENSE.txt?root=metaclass</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+</project>

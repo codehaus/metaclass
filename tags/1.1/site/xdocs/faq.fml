@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<faqs title="Frequently Asked Questions">
+
+    <part id="general">
+        <title>General</title>
+
+        <faq id="why-no-package-attributes">
+            <question>Why aren't Package Attributes supported?</question>
+            <answer>
+                Package Attributes are no longer supported by the
+                MetaClass toolkit. The reason being that the java.lang.Package
+                class does not have an associated ClassLoader and usually
+                metadata is loaded from the ClassLoader. Packages can be
+                defined multiple times in a JVM but the java.lang.Package object
+                is JVM wide. This required that the user pass in a specific
+                ClassLoader. Even then the one Package can reasonably have
+                multiple definitions of metadata in the same ClassLoader but
+                loaded from different Jars. It is unclear what strategy would
+                be required to resolve this issue as sometimes it would be useful
+                to merge the metadata from multiple sources and in other cases
+                one set of metadata will overide another set of metadata. For
+                these reasons Package Attributes were removed from MetaClass.
+            </answer>
+        </faq>
+    </part>
+
+</faqs>

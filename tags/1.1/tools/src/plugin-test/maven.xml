@@ -1,0 +1,27 @@
+<project
+    xmlns:ant="jelly:ant"
+    xmlns:j="jelly:core"
+    xmlns:u="jelly:util"
+    default="testPlugin">
+
+    <preGoal name="metaclass:generate">
+        <ant:metaclass_interceptorSet id="maven.dna.interceptors">
+            <ant:interceptor
+                name="org.codehaus.metaclass.tools.qdox.DefaultQDoxAttributeInterceptor"/>
+        </ant:metaclass_interceptorSet>
+
+        <ant:metaclass_addToInterceptorSet
+            dest="maven.metaclass.interceptors"
+            source="maven.dna.interceptors"/>
+    </preGoal>
+
+    <goal name="testPlugin" prereqs="metaclass:generate">
+        <ant:available
+            file="${maven.build.dest}/com/biz/MyClass.class"
+            type="file"
+            property="descAvailable"/>
+        <j:if test="${descAvailable != 'true'}">
+            <ant:fail message="Failed to generate descriptor"/>
+        </j:if>
+    </goal>
+</project>

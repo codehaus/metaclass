@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project default="build" 
+    xmlns:ant="jelly:ant"
+    xmlns:deploy="deploy"
+	xmlns:maven="jelly:maven">
+
+    <postGoal name="clean:clean">
+<!--
+        <maven:maven descriptor="${basedir}/src/plugin-test/project.xml"
+            goals="clean:clean"
+            ignoreFailures="false"/>
+-->
+    </postGoal>
+
+    <postGoal name="plugin:install">
+<!--
+        <attainGoal name="plugin:test"/>
+-->
+    </postGoal>
+    
+    <goal name="deploy" prereqs="jar:deploy,setupPlugin">
+        <deploy:artifact
+            artifact="${maven.build.dir}/${artifact}"
+            type="plugins"
+            assureDirectoryCommand="mkdir -p"
+            siteCommand="cd @deployDirectory@; chmod g+w ${artifact}; chgrp ${maven.remote.group} ${artifact}"/>
+    </goal>
+
+    <goal name="build" prereqs="jar:install,setupPlugin">
+        <ant:copy file="${maven.build.dir}/${artifact}"
+            todir="${maven.repo.local}/${pom.groupId}/plugins"/>
+        <ant:delete>
+            <ant:fileset dir="${maven.home}/plugins">
+                <ant:include name="${pom.artifactID}-*"/>
+            </ant:fileset>
+        </ant:delete>
+    </goal>
+
+    <goal name="setupPlugin" prereqs="jar:jar">
+        <ant:property name="artifact"
+            value="maven-metaclass-plugin-${pom.currentVersion}.jar"/>
+        <ant:echo message="Artifact: ${artifact}"/>
+        <ant:copy file="${maven.build.dir}/${maven.final.name}.jar"
+            toFile="${maven.build.dir}/${artifact}"/>
+    </goal>
+
+</project>

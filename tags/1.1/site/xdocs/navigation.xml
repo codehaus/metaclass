@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="MetaClass">
+
+    <title>MetaClass</title>
+
+    <body>
+        <links>
+            <item href="http://qdox.codehaus.org" name="QDox"/>
+            <item href="http://codehaus.org" name="Codehaus"/>
+        </links>
+
+        <menu name="Releases">
+            <item name="Release 1.0" href="/release-1_0.html"/>
+            <item name="Release 1.1" href="/release-1_1.html"/>
+        </menu>
+
+        <menu name="MetaClass Guide">
+            <item name="Attribute Model" href="/model.html"/>
+            <item name="Runtime Access" href="/runtime.html"/>
+            <item name="Alternative Accessors" href="/accessor.html"/>
+        </menu>
+
+        <menu name="MetaClass Tool Guide">
+            <item name="Pre-Compilation" href="/precompile.html"/>
+            <item name="Pre-Compilation Filtering" href="/filtering.html"/>
+            <item name="Pre-Compilation Interception" href="/interception.html"/>
+            <item name="Ant Task Reference" href="/task.html"/>
+        </menu>
+    </body>
+
+</project>
+
