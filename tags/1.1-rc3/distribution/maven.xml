@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<project default="main"
+    xmlns:doc="doc"
+    xmlns:j="jelly:core"
+    xmlns:maven="jelly:maven"
+    xmlns:define="jelly:define"
+    xmlns:util="jelly:util"
+    xmlns:ant="jelly:ant">
+
+    <goal name="main">
+        <attainGoal name="build"/>
+    </goal>
+
+    <goal name="build" prereqs="release:build-distribution-bin">
+<!--
+    	<attainGoal name="release:build-distribution-src"/>
+-->
+    </goal>
+
+    <preGoal name="release:setup-distribution-bin">
+        <maven:maven
+            descriptor="../site/project.xml"
+            goals="build"
+            ignoreFailures="false"/>
+    </preGoal>
+
+    <postGoal name="release:setup-distribution-bin">
+        <j:set var="distDir" value="${maven.build.dir}/${maven.release.name.bin}"/>
+
+		<!-- Copy docs  -->
+        <ant:copy todir="${distDir}">
+            <ant:fileset dir="${basedir}/../site/target">
+                <ant:include name="docs/**"/>
+            </ant:fileset>
+        </ant:copy>
+
+		<!-- Create README.txt -->
+        <j:file name="${distDir}/README.txt" omitXmlDeclaration="true" escapeText="false">
+             MetaClass runtime attribute toolkit: See docs/index.html for documentation.
+        </j:file>
+
+        <!-- Create source zip -->
+        <ant:zip destfile="${distDir}/src.zip">
+            <ant:zipfileset dir="${basedir}/../runtime/src/java"/>
+            <ant:zipfileset dir="${basedir}/../tools/src/java"/>
+        </ant:zip>
+
+        <!-- Copy LICENSE.txt -->
+        <ant:copy file="${basedir}/../LICENSE.txt" todir="${distDir}"/>
+    </postGoal>
+
+    <postGoal name="release:build-distribution-bin">
+    	<ant:copy todir="${maven.repo.local}/${pom.artifactDirectory}/distributions"
+      		overwrite="true">
+      		<ant:fileset dir="${maven.build.dir}">
+      			<ant:include name="${maven.final.name}.tar.gz"/>
+      			<ant:include name="${maven.final.name}.zip"/>
+      		</ant:fileset>
+        </ant:copy>
+    </postGoal>
+
+
+    <goal name="deploy" prereqs="build,release:deploy-distribution-bin">
+<!--
+    	<attainGoal name="release:deploy-distribution-src"/>
+-->
+    </goal>
+
+</project>

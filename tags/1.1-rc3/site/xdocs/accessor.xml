@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>Alternative Accessors</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                By default MetaClass will attempt to build a ClassDescriptor
+                from a descriptor file that is located in the same ClassLoader
+                as the Class the the ClassDescriptor describes. This is
+                sufficient for most use cases however consider the case where
+                a class wants to get the MetaData about a component but they are
+                only provided a proxy of the component. The developer must be able
+                to associate metadata with the proxy object. To support this use
+                case the developer must implement a custom MetaClassAccessor.
+            </p>
+            <p>
+                By default the MetaClass toolkit will attempt to load descriptors
+                for classes from the same ClassLoader that defined the class in a
+                file ending with -meta.binary rather than .class. However the
+                developer can overide this by calling
+                <code>MetaClassIntrospector.setAccessor(MetaClassAccessor)</code>
+                with a new implementation of MetaClassAccessor.
+            </p>
+            <p>
+                For example if the developer wanted to be able to register metadata
+                for classes but default to the standard mechanisms if no metadata was
+                registered then the following MetaClassAccessor implementaiton could
+                be used.
+            </p>
+            <source><![CDATA[
+public class RegisteringMetaClassAccessor
+    extends DefaultMetaClassAccessor
+{
+   private final Map m_classDescriptors = new HashMap();
+
+   public void registerClassDescriptor( final Class clazz,
+                                        final ClassDescriptor descriptor )
+   {
+      m_classDescriptors.put( clazz.getName(), descriptor );
+   }
+
+   public ClassDescriptor getClassDescriptor( final String classname,
+                                              final ClassLoader classLoader )
+        throws MetaClassException
+   {
+      final ClassDescriptor descriptor = m_classDescriptors.remove( classname );
+      if( null != descriptor )
+      {
+         return descriptor;
+      }
+      else
+      {
+         return super.getClassDescriptor( classname, classLoader );
+      }
+   }
+}
+]]></source>
+            <p>
+                The developer could also develope alternative accessors
+                if the developer wanted to load metadata from databases,
+                directory servers or other alternative data sources.
+            </p>
+        </section>
+    </body>
+
+</document>

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>Pre-Compilation Interception</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                MetaClass provides mechanisms via which the developer can intercept
+                and preprocess JavaDoc tags for a class prior to them being written
+                out into the MetaClass descriptor. This allows the developer to write
+                an interceptor that filters out unwanted JavaDoc tags, translates
+                deprecated attributes to a non-deprecated form and performs validation
+                on the remaining attributes.
+            </p>
+        </section>
+        <section name="My First Interceptor">
+            <p>
+                All interceptors implement the
+                <tt>org.codehaus.metaclass.tools.qdox.QDoxAttributeInterceptor</tt>
+                interface and should extend the
+                <tt>org.codehaus.metaclass.tools.qdox.DefaultQDoxAttributeInterceptor</tt>
+                base class. By extending DefaultQDoxAttributeInterceptor the developer
+                is less likely to have broken code if the QDoxAttributeInterceptor interface
+                changes in the future.
+            </p>
+            <p>
+                For example a developer could decide that they wanted to filter out all
+                of the standard JavaDoc attributes such as '@version', '@author' etc as
+                they are not used in their application and only increase the size of the
+                generated metadata descriptor. To do this the developer could just filter
+                out any attribute that has a name equal to a predefined set of names.
+                The following source code performs that attribute filtering.
+            </p>
+            <source><![CDATA[
+public class StandardJavadocStripper
+    extends DefaultQDoxAttributeInterceptor
+{
+    public Attribute processClassAttribute( JavaClass clazz,
+                                            Attribute attribute )
+    {
+        return processAttribute( attribute );
+    }
+
+    public Attribute processFieldAttribute( JavaField field,
+                                            Attribute attribute )
+    {
+        return processAttribute( attribute );
+    }
+
+    public Attribute processMethodAttribute( JavaMethod method,
+                                             Attribute attribute )
+    {
+        return processAttribute( attribute );
+    }
+
+    private Attribute processAttribute( final Attribute attribute )
+    {
+        final String name = attribute.getName();
+        if( name.equals( "version" ) ||
+            name.equals( "author" ) ||
+            name.equals( "return" ) ||
+            name.equals( "exception" ) ||
+            name.equals( "throws" ) ||
+            name.equals( "param" ) )
+        {
+            return null;
+        }
+        else
+        {
+            return attribute;
+        }
+    }
+}
+]]></source>
+        </section>
+        <section name="Using the Interceptor">
+            <p>
+                After the developer has written the interceptor they have to
+                get the ant task to use the interceptor. This is done by adding
+                a child element &lt;interceptor/&gt; into the task. This element
+                has one attribute indicating the name of the interceptor class
+                to use and contains a child &lt;classpath/&gt; element that defines
+                where the .class files for interceptor are loaded from. See below
+                for an example of how to use the above interceptor. Any number of
+                Interceptors can be added and each interceptor will be invoked
+                in turn until one filters out the attribute or until there are no
+                more interceptors left.
+            </p>
+            <source><![CDATA[
+<metaclassGen destDir="target/classes">
+    <fileset dir="src/java"/>
+    <interceptor name="example.intercept.StandardJavadocStripper">
+        <classpath>
+            <pathelement location="myInterceptor.jar"/>
+        </classpath>
+    </interceptor>
+</metaclassGen>
+]]></source>
+        </section>
+    </body>
+
+</document>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>MetaClass Release 1.0</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                This is the first release of MetaClass, the runtime
+                attribute toolkit. The release was historically available
+                at sourceforge but has since been discommissioned.
+            </p>
+            <p>
+                MetaClass releases are now available at 
+	            <ul>
+    	            <li><a href="http://dist.codehaus.org/metaclass/jars">Codehaus Distribution Server</a></li>
+        	    </ul>
+            </p>
+        </section>
+    </body>
+
+</document>

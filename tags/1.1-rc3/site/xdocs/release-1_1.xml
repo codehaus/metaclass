@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>MetaClass Release 1.1</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                This is the second release of MetaClass. This release
+                introduces several refactorings to simplify usage of
+                MetaClass in response to user feedback. See the
+                changes below for a comprehensive list of changes in
+                the release. The release can be downloaded from;
+            </p>
+            <ul>
+                <li>
+                    <a href="http://dist.codehaus.org/metaclass/jars">Codehaus Distribution Server</a>
+                </li>
+            </ul>
+        </section>
+        <section name="Changes">
+            <ul>
+                <li>
+                    Support reading and writing descriptors as part of the .class
+                    file. The aim of this technique is to reduce the chance that
+                    descriptors and .class files will get out of sync. MetaClass will
+                    attempt to load descriptors from .class files prior to attempting
+                    to load descriptors that sit side-by-side the .class file.
+                </li>
+                <li>
+                    Removed the notion of Package-level attributes
+                    and corresponding PackageDescriptor. This was removed
+                    as there was no actual mechanism to compile package
+                    attributes. There was also ambiguity wrt how to handle
+                    package attributes. See the
+                    <a href="faq.html#Package%20Attributes">FAQ</a> for more
+                    details.
+                </li>
+                <li>
+                    Fixed a bug where methods with the same name and the
+                    same number of parameters would always return the first
+                    methods attributes. This bug was also fixed for
+                    constructors that had the same number of parameters.
+                </li>
+                <li>
+                    Moved the following classes into the package
+                    <tt>org.codehaus.metaclass.introspector</tt> so that
+                    now all the packages have clean dependency lines and there
+                    is no circular dependencies. The classes moved included;
+                    <tt>org.codehaus.metaclass.MetaClassIntrospector</tt>,
+                    <tt>org.codehaus.metaclass.MetaClassException</tt>,
+                    <tt>org.codehaus.metaclass.io.DefaultMetaClassAccessor</tt>
+                    and <tt>org.codehaus.metaclass.io.MetaClassAccessor</tt>.
+                </li>
+                <li>
+                    Removed constants pertaining to the serialized format
+                    for MetaClass descriptors as they were never used and are
+                    unlikely to be used in the future.
+                </li>
+                <li>
+                    GenerateClassDescriptorsTask will continue to process source
+                    files even if generation of a descriptor fails. However if
+                    generation of descriptor does fail it will still throw a
+                    BuildException after it has finished processing the rest of
+                    the descriptors.
+                </li>
+                <li>
+                    Achieve 100% unit test coverage of MetaClass code.
+                </li>
+                <li>
+                    Remove modifiers from FeatureDescriptor as they can be
+                    derived from the corresponding classes in java.lang.reflect.
+                    This was a backwards incompatible change in serialization
+                    format and thus the version of the MetaClass file format
+                    was increased to 2.
+                </li>
+                <li>
+                    Added in CachingMetaClassAccessor that caches results to a child
+                    Accessor and reworked Introspector to use this internally.
+                </li>
+                <li>
+                    Modified the MetaClassAccessor interface to accept an
+                    extra parameter of type MetaClassAccessor. This accessor
+                    can be used to resolve related classes when loading a
+                    ClassDescriptor. This enables support for creating an
+                    Accessor that supports inheritance of attributes.
+                </li>
+                <li>
+                    By default the ant task will now not filter out attributes
+                    that do not have a name space (ie are not in the form X.Y).
+                    To disable this behaviour use set the
+                    namespaceTagsOnly="false" attribute on the task.
+                </li>
+                <li>
+                    Support reading and writing of descriptors in XML format.
+                    The runtime will attempt to load XML descriptors if binary
+                    descriptors are not present.
+                </li>
+                <li>
+                    Documented the ant task.
+                </li>
+                <li>
+                    Added in compacting of ClassDescriptors prior to
+                    serializing the descriptor. If a field has no attributes
+                    then it is not serialized. If a method has no attributes
+                    and keepEmptyMethods=false then it is not serialized. If
+                    a class has no methods or fields to serialize and has no
+                    attributes then it is not serialized.
+                </li>
+                <li>
+                    Created Ant DataTypes "interceptorSet" and "filterSet" to
+                    contain definitions of interceptors and filters
+                    respectively. Also created Ant tasks
+                    "mc_addToInterceptorSet" and "mc_addToFilterSet" so that
+                    existing sets could be combined.
+                </li>
+                <li>
+                    Created a Maven plugin to generate MetaClass descriptors.
+                    Developers need to invoke the "metaclass:generate" goal
+                    to generate descriptors. See documentation for further
+                    details.
+                </li>
+            </ul>
+        </section>
+    </body>
+
+</document>

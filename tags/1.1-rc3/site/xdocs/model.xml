@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>Attribute Model</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                MetaClass stores metadata about program elements such as classes,
+                methods and fields. The metadata is packaged in discrete units named
+                Attributes. Multiple attributes can be attached to each programming
+                element. All attributes have a name and attributes can optionally
+                contain either textual content or parameters. Parameters are key-value
+                pairs that are associated with the attribute.
+            </p>
+            <p>
+                Attributes with just a name are useful to mark a component as supporting
+                a feature or capability. For example a developer could markup a class with
+                the attribute named "dna.component" to indicate that the class conformed to
+                the rules of being a component in the DNA framework.
+            </p>
+            <p>
+                Attributes with parameters are the most common form of attribute.
+                An example usage of a parameterized attribute would be to mark up a
+                method with the attribute named "mx.method" to indicate that the method
+                is to be exposed to the management subsystem (usually JMX). The "mx.method"
+                attribute may have parameter named "displayString" that indicates the
+                string exposed to user when it is presented in the UI and the parameter
+                "impact" that indicates whether the method is just informational or will
+                change system operation. Below is an example of this attribute represented
+                as javadoc tags and xml elements.
+            </p>
+            <source><![CDATA[
+@mx.method displayString="My Magic Method for Returning Info" impact="INFO"
+
+<attribute name="mx.method">
+  <param name="displayString" value="My Magic Method for Returning Info"/>
+  <param name="impact" value="INFO"/>
+</attribute>
+]]></source>
+            <p>
+                Attributes with text content are a catch-all attribute that allows the
+                developer to associate arbitrary string data with a programming element.
+            </p>
+            <source><![CDATA[
+@version $Revision: 1.2 $ $Date: 2004/03/21 23:37:20 $
+
+<attribute name="version" value="$Revision: 1.2 $ $Date: 2004/03/21 23:37:20 $"/>
+]]></source>
+         </section>
+    </body>
+
+</document>
