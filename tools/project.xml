@@ -63,10 +63,6 @@
             <version>1.3</version>
         </dependency>
         <dependency>
-            <!--
-               Must be declared here as used in plugin where parent
-               project no exist 
-            -->
             <groupId>asm</groupId>
             <artifactId>asm</artifactId>
             <version>1.4</version>
