@@ -10,6 +10,9 @@
     <inceptionYear>2003</inceptionYear>
 
     <groupId>metaclass</groupId>
+    <!--
+      Have to bump version in metaclass-tools and plugin-test if this changes 
+    -->
     <currentVersion>1.0-rc3-dev</currentVersion>
     <package>org.codehaus.metaclass</package>
 
