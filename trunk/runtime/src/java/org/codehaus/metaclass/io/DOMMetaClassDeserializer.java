@@ -166,7 +166,7 @@ public class DOMMetaClassDeserializer
      * @return the method parameters
      * @throws Exception if element malformed
      */
-    ParameterDescriptor[] buildParameters( Element element )
+    ParameterDescriptor[] buildParameters( final Element element )
         throws Exception
     {
         expectElement( element, MetaClassIOXml.PARAMETERS_ELEMENT );
