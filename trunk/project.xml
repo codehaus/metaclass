@@ -90,14 +90,4 @@
         </dependency>
     </dependencies>
 
-    <reports>
-        <report>maven-jdepend-plugin</report>
-        <report>maven-checkstyle-plugin</report>
-        <report>maven-javadoc-plugin</report>
-        <report>maven-jxr-plugin</report>
-        <report>maven-junit-report-plugin</report>
-        <report>maven-license-plugin</report>
-        <report>maven-clover-plugin</report>
-    </reports>
-
 </project>
