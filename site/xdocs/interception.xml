@@ -20,9 +20,9 @@
         <section name="My First Interceptor">
             <p>
                 All interceptors implement the
-                <tt>org.realityforge.metaclass.tools.qdox.QDoxAttributeInterceptor</tt>
+                <tt>org.codehaus.metaclass.tools.qdox.QDoxAttributeInterceptor</tt>
                 interface and should extend the
-                <tt>org.realityforge.metaclass.tools.qdox.DefaultQDoxAttributeInterceptor</tt>
+                <tt>org.codehaus.metaclass.tools.qdox.DefaultQDoxAttributeInterceptor</tt>
                 base class. By extending DefaultQDoxAttributeInterceptor the developer
                 is less likely to have broken code if the QDoxAttributeInterceptor interface
                 changes in the future.

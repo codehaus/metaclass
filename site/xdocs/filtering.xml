@@ -17,7 +17,7 @@
         <section name="My First Interceptor">
             <p>
                 All filters implement the
-                <tt>org.realityforge.metaclass.tools.compiler.JavaClassFilter</tt>
+                <tt>org.codehaus.metaclass.tools.compiler.JavaClassFilter</tt>
                 interface. Consider the situation where a developer only wants to
                 process JavaClass objects that have the doclet tag "@dna.component"
                 declared at the class level. All other classes should be skipped

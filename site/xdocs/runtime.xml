@@ -131,7 +131,7 @@ Attribute[] attributes =
                 ClassDescriptor and PackageDescriptor objects. The Descriptors
                 can then be traversed to access the relevent metadata such
                 as Method and Field attributes. See below for an example usage
-                and the <a href="apidocs/org/realityforge/metaclass/model/package-summary.html">
+                and the <a href="apidocs/org/codehaus/metaclass/model/package-summary.html">
                 API docs</a> for detailed description of the Descriptor objects.
             </p>
 <source><![CDATA[
