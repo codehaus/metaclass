@@ -34,11 +34,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>1.4</version>
-        </dependency>
-        <dependency>
             <groupId>jmock</groupId>
             <artifactId>jmock</artifactId>
             <version>20031129.200437</version>
