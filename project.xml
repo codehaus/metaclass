@@ -18,7 +18,7 @@
 
     <issueTrackingUrl>http://jira.codehaus.org/secure/BrowseProject.jspa?id=10290</issueTrackingUrl>
     <url>http://metaclass.codehaus.org/</url>
-    <logo>/images/metaclass-logo.png</logo>
+    <logo>/images/logo.gif</logo>
 
     <distributionDirectory>/www/dist.codehaus.org</distributionDirectory>
     <distributionSite>codehaus.org</distributionSite>
