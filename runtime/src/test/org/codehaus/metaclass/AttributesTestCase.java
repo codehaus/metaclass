@@ -774,4 +774,20 @@ public class AttributesTestCase
         final Attribute[] results = Attributes.getAttributes( constructor );
         assertEquals( "attributes.length", 0, results.length );
     }
+
+    public void testGetMethodDescriptorForMethodOnJdkObject()
+        throws Exception
+    {
+        try
+        {
+            Attributes.getMethod( Object.class.getMethod( "equals", new Class[]{Object.class} ));
+
+            fail();
+        }
+        catch( MetaClassException e )
+        {
+            assertEquals( "Unable to load ClassDescriptor for java.lang.Object without a classLoader",
+                          e.getMessage());
+        }
+    }
 }
