@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tools/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tools/src/plugin-test/src/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tools/src/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/distribution/target" />
       <excludeFolder url="file://$MODULE_DIR$/runtime/target" />
       <excludeFolder url="file://$MODULE_DIR$/site/target" />
       <excludeFolder url="file://$MODULE_DIR$/tools/target" />
