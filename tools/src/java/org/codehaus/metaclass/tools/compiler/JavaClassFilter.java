@@ -20,7 +20,8 @@ public interface JavaClassFilter
 {
     /**
      * This method provides an access point for subclasses to use custom filters
-     * on the list of classes parsed. i.e. to return null if the class has been filtered.
+     * on the list of classes parsed.
+     * i.e. to return null if the class has been filtered.
      *
      * @param javaClass the JavaClass
      * @return javaClass or null
