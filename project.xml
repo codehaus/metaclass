@@ -46,14 +46,11 @@
             <subscribe>dev-subscribe@metaclass.codehaus.org</subscribe>
             <unsubscribe>dev-unsubscribe@metaclass.codehaus.org</unsubscribe>
         </mailingList>
-<!--
         <mailingList>
-            <name>JContainer Commits</name>
-            <subscribe>http://lists.codehaus.org/mailman/listinfo/jcontainer-commits</subscribe>
-            <unsubscribe>http://lists.codehaus.org/mailman/listinfo/jcontainer-commits</unsubscribe>
-            <archive>http://lists.codehaus.org/pipermail/jcontainer-commits</archive>
+            <name>MetaClass Commits</name>
+            <subscribe>scm-subscribe@metaclass.codehaus.org</subscribe>
+            <unsubscribe>scm-unsubscribe@metaclass.codehaus.org</unsubscribe>
         </mailingList>
--->
     </mailingLists>
 
     <developers>
