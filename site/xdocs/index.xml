@@ -34,8 +34,8 @@
                 can move on to more advanced usages such as
                 <a href="interception.html">filtering and augmenting</a> metadata
                 during the pre-compilation stage, loading the metadata from
-                <a href="accessor.html">alternative sources</a> and
-                <a href="integration.html">integrating</a> MetaClass into a java container.
+                <a href="accessor.html">alternative sources</a> and integrating
+                MetaClass into a java container.
             </p>
         </section>
     </body>
