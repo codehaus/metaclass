@@ -2,7 +2,7 @@
 <project>
     <extend>${basedir}/../project.xml</extend>
     <name>MetaClass Distribution</name>
-    <artifactId>metaclass-distribution</artifactId>
+    <artifactId>metaclass</artifactId>
 
     <shortDescription>MetaClass Distribution component.</shortDescription>
 
