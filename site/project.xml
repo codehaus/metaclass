@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project>
+    <extend>${basedir}/../project.xml</extend>
+    <name>DNA</name>
+    <id>dna-site</id>
+
+    <shortDescription>MetaClass web site</shortDescription>
+
+    <description>
+    	MetaClass web site provides accesses to the MetaClass project
+    	information and reports.
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <id>qdox</id>
+            <version>1.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Only used if aggregating components by source -->
+        <sourceDirectory>target/aggregate-src/java</sourceDirectory>
+        <unitTestSourceDirectory>target/aggregate-src/test</unitTestSourceDirectory>
+
+        <unitTest>
+            <resource>
+                <directory>target/aggregate-src/test</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+
+            <includes>
+                <include>**/*TestCase*</include>
+            </includes>
+            <excludes>
+                <exclude>**/Abstract*</exclude>
+            </excludes>
+        </unitTest>
+    </build>
+
+    <reports>
+        <report>maven-jdepend-plugin</report>
+        <report>maven-checkstyle-plugin</report>
+        <report>maven-javadoc-plugin</report>
+        <report>maven-jxr-plugin</report>
+        <report>maven-junit-report-plugin</report>
+        <report>maven-license-plugin</report>
+        <report>maven-clover-plugin</report>
+    </reports>
+
+</project>
