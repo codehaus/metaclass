@@ -13,7 +13,7 @@
     <!--
       Have to bump version in metaclass-tools and plugin-test if this changes 
     -->
-    <currentVersion>1.1-rc4-dev</currentVersion>
+    <currentVersion>1.1</currentVersion>
     <package>org.codehaus.metaclass</package>
 
     <issueTrackingUrl>http://jira.codehaus.org/secure/BrowseProject.jspa?id=10290</issueTrackingUrl>
@@ -30,15 +30,18 @@
         <url>http://svn.metaclass.codehaus.org</url>
     </repository>
 
-<!--
     <versions>
         <version>
-            <id>1.1-dev</id>
-            <name>1.1-dev</name>
-            <tag>HEAD</tag>
+            <id>1.1</id>
+            <name>1.1</name>
+            <tag>1.1</tag>
+        </version>
+        <version>
+            <id>1.1-rc3</id>
+            <name>1.1-rc3</name>
+            <tag>1.1-rc3</tag>
         </version>
     </versions>
--->
 
     <mailingLists>
         <mailingList>
