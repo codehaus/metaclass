@@ -114,7 +114,7 @@
                     Created Ant DataTypes "interceptorSet" and "filterSet" to
                     contain definitions of interceptors and filters
                     respectively. Also created Ant tasks
-                    "mc_addToInterceptorSet" and "mc_addToFilterSet" so that
+                    "metaclass_addToInterceptorSet" and "metaclass_addToFilterSet" so that
                     existing sets could be combined.
                 </li>
                 <li>

@@ -4,7 +4,7 @@
     xmlns:ant="jelly:ant">
 
     <goal name="metaclass:init" description="Initialize Plugin">
-        <ant:taskdef name="mc_register"
+        <ant:taskdef name="metaclass_register"
             classname="org.codehaus.metaclass.tools.tasks.RegisterMetaClassLibTask">
             <ant:classpath>
                 <ant:pathelement path="${plugin.dir}"/>
@@ -14,10 +14,10 @@
             </ant:classpath>
         </ant:taskdef>
 
-        <ant:mc_register/>
+        <ant:metaclass_register/>
 
-        <ant:mc_interceptorSet id="maven.metaclass.interceptors"/>
-        <ant:mc_filterSet id="maven.metaclass.filters"/>
+        <ant:metaclass_interceptorSet id="maven.metaclass.interceptors"/>
+        <ant:metaclass_filterSet id="maven.metaclass.filters"/>
     </goal>
 
     <goal name="metaclass:generate"
@@ -27,7 +27,7 @@
         <!-- Ensure maven.build.dest exists -->
         <ant:mkdir dir="${maven.build.dest}"/>
 
-        <ant:mc_generate
+        <ant:metaclass_generate
             destDir="${maven.build.dest}"
             format="${maven.metaclass.format}"
             namespaceTagsOnly="${maven.metaclass.namespaceTagsOnly}"
@@ -39,7 +39,7 @@
                 <ant:include name="${maven.metaclass.include}"/>
                 <ant:exclude name="${maven.metaclass.exclude}"/>
             </ant:fileset>
-        </ant:mc_generate>
+        </ant:metaclass_generate>
     </goal>
 
 </project>

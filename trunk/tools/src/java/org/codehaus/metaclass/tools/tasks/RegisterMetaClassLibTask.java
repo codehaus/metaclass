@@ -26,14 +26,14 @@ public class RegisterMetaClassLibTask
     public void execute()
     {
         final Project project = getProject();
-        project.addDataTypeDefinition( "mc_interceptorSet",
+        project.addDataTypeDefinition( "metaclass_interceptorSet",
                                        InterceptorSet.class );
-        project.addDataTypeDefinition( "mc_filterSet", FilterSet.class );
-        project.addTaskDefinition( "mc_generate",
+        project.addDataTypeDefinition( "metaclass_filterSet", FilterSet.class );
+        project.addTaskDefinition( "metaclass_generate",
                                    GenerateClassDescriptorsTask.class );
-        project.addTaskDefinition( "mc_addToInterceptorSet",
+        project.addTaskDefinition( "metaclass_addToInterceptorSet",
                                    AddToInterceptorSetTask.class );
-        project.addTaskDefinition( "mc_addToFilterSet",
+        project.addTaskDefinition( "metaclass_addToFilterSet",
                                    AddToFilterSetTask.class );
     }
 }

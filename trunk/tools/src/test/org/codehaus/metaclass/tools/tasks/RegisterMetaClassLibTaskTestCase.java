@@ -27,20 +27,20 @@ public class RegisterMetaClassLibTaskTestCase
         task.execute();
         final Map dataTypes = project.getDataTypeDefinitions();
         final Map taskTypes = project.getTaskDefinitions();
-        assertEquals( "datatypes(mc_interceptorSet)",
+        assertEquals( "datatypes(metaclass_interceptorSet)",
                       InterceptorSet.class,
-                      dataTypes.get( "mc_interceptorSet" ) );
-        assertEquals( "datatypes(mc_filterSet)",
+                      dataTypes.get( "metaclass_interceptorSet" ) );
+        assertEquals( "datatypes(metaclass_filterSet)",
                       FilterSet.class,
-                      dataTypes.get( "mc_filterSet" ) );
-        assertEquals( "taskTypes(mc_generate)",
+                      dataTypes.get( "metaclass_filterSet" ) );
+        assertEquals( "taskTypes(metaclass_generate)",
                       GenerateClassDescriptorsTask.class,
-                      taskTypes.get( "mc_generate" ) );
-        assertEquals( "taskTypes(mc_addToInterceptorSet)",
+                      taskTypes.get( "metaclass_generate" ) );
+        assertEquals( "taskTypes(metaclass_addToInterceptorSet)",
                       AddToInterceptorSetTask.class,
-                      taskTypes.get( "mc_addToInterceptorSet" ) );
-        assertEquals( "taskTypes(mc_addToFilterSet)",
+                      taskTypes.get( "metaclass_addToInterceptorSet" ) );
+        assertEquals( "taskTypes(metaclass_addToFilterSet)",
                       AddToFilterSetTask.class,
-                      taskTypes.get( "mc_addToFilterSet" ) );
+                      taskTypes.get( "metaclass_addToFilterSet" ) );
     }
 }
