@@ -10,11 +10,9 @@
         <section name="Introduction">
             <p>
                 This is the first release of MetaClass, the runtime
-                attribute toolkit. The release can be downloaded from;
+                attribute toolkit. The release was historically available
+                at sourceforge but has since been discommisioned.
             </p>
-            <ul>
-                <li><a href="http://sourceforge.net/project/showfiles.php?group_id=67448&amp;release_id=186856">SourceForge Mirrors</a></li>
-            </ul>
         </section>
     </body>
 
