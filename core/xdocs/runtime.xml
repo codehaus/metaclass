@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>Runtime Access</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                There are two supported mechanisms for accessing Attributes
+                about a Class or a Package at runtime. The first method allows
+                the developer to access the complete metadata structure for the
+                class or package. The second approach is to use the
+                <tt>Attributes</tt> utility class to access attributes about specific
+                programming elements.
+            </p>
+        </section>
+
+        <section name="The Attributes Utility Class">
+            <p>
+                The <tt>Attributes</tt> utility class exists to simplify access
+                to class attributes. The <tt>Attributes</tt> class has several static
+                methods that allow you to retrieve the attributes associated with
+                a particular programming element. The developer can also retrieve
+                all attributes with a particular name or just the first attribute
+                with a particular name. These methods were designed to match
+                common use cases.
+            </p>
+            <p>
+                Consider the example where you have a source file marked up as follows.
+            </p>
+<source><![CDATA[
+/**
+ * @dna.component
+ * @dna.service type="MyService"
+ * @dna.service type="MyExtendedService"
+ */
+public class MyClass
+   implements MyService, MyExtendedService
+{
+   ...
+}
+]]></source>
+            <p>
+                The developer could access all the Attributes for
+                MyClass using the following code;
+            </p>
+<source><![CDATA[
+// The return value must contain the three
+// attributes; dna.component and two
+// dna.service attributes
+Attribute[] attributes =
+    Attributes.getAttributes( MyClass.class );
+]]></source>
+            <p>
+                Alternatively the developer could just access the
+                attributes with the name "dna.service" using the following
+                code;
+            </p>
+<source><![CDATA[
+// The return value must contain the two
+// "dna.service" attributes
+Attribute[] attributes =
+    Attributes.getAttributes( MyClass.class, "dna.service" );
+]]></source>
+            <p>
+                The developer could also access the single "dna.component"
+                attribute using;
+            </p>
+<source><![CDATA[
+// The return value must be the dna.component attribute
+Attribute attribute =
+    Attributes.getAttribute( MyClass.class, "dna.component" );
+]]></source>
+            <p>
+                Equivelent methods exist for retrieval of attributes for
+                methods and fields. Rather than passing the Class instance
+                in the developer passes the Field or Method object.
+            </p>
+<source><![CDATA[
+// Get all attributes attached to doMagic() method
+Method method =
+    MyClass.class.getMethod( "doMagic", new Class[0] );
+Attribute[] attributes =
+    Attributes.getAttributes( method );
+
+// Get all attributes attached to m_magicLevel field
+Field field =
+    MyClass.class.getField( "m_magicLevel" );
+Attribute[] attributes =
+    Attributes.getAttributes( field );
+]]></source>
+            <p>
+                Equivelent methods exist for retrieval of attributes for
+                methods and fields. Rather than passing the Class instance
+                in the developer passes the Field or Method object.
+            </p>
+<source><![CDATA[
+// Get all attributes attached to doMagic() method
+Method method =
+    MyClass.class.getMethod( "doMagic", new Class[0] );
+Attribute[] attributes =
+    Attributes.getAttributes( method );
+
+// Get all attributes attached to m_magicLevel field
+Field field =
+    MyClass.class.getField( "m_magicLevel" );
+Attribute[] attributes =
+    Attributes.getAttributes( field );
+]]></source>
+            <p>
+                The Package programming element is not handled in an
+                identical manner. The <tt>java.lang.Package</tt> is not
+                associated with a particular ClassLoader but is global
+                to the JVM. However the same package may have classes in
+                multiple different ClassLoaders and each different
+                ClassLoader may contain different metadata about the same
+                Package. Thus the Attributes utility class does not support
+                access to Package attributes and the complete PackageDescriptor
+                must be loaded via standard mechanisms.
+            </p>
+        </section>
+        <section name="Accessing Complete Descriptors">
+            <p>
+                The other method of accessing metadata about programming
+                elements is to directly load and manipulate the PackageDescriptor
+                and ClassDescriptor objects. The developer accesses the descriptors
+                using the <tt>MetaClassIntrospector</tt> to retrieve the
+                ClassDescriptor and PackageDescriptor objects. The Descriptors
+                can then be traversed to access the relevent metadata such
+                as Method and Field attributes. See below for an example usage
+                and the <a href="apidocs/org/realityforge/metaclass/model/package-summary.html">
+                API docs</a> for detailed description of the Descriptor objects.
+            </p>
+<source><![CDATA[
+ClassDescriptor clazzDescriptor =
+    MetaClassIntrospector.getClassDescriptor( MyClass.class );
+
+FieldDescriptor[] fields = clazzDescriptor.getFields()
+processFields( fields );
+
+MethodDescriptor[] methods = clazzDescriptor.getMethods()
+processMethods( methods );
+
+PackageDescriptor pakkageDescriptor =
+    MetaClassIntrospector.getPackageDescriptor( MyClass.class );
+Attribute[] attributes = pakkageDescriptor.getAttributes();
+]]></source>
+        </section>
+    </body>
+
+</document>

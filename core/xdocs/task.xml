@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>Ant Task Reference</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                The ant task is used to generate the MetaClass descriptors
+                from annotated Java source files. The following table lists
+                the attributes for ant task
+            </p>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Optional?</td>
+                    <td>Default Value</td>
+                </tr>
+                <tr>
+                    <td>destDir</td>
+                    <td>
+                        The destination directory where descriptors
+                        are generated.
+                    </td>
+                    <td>Required</td>
+                    <td>n/a</td>
+                </tr>
+                <tr>
+                    <td>namespaceTagsOnly</td>
+                    <td>
+                        A flag indicating whether attributes without any
+                        namespace (ie are not of form X.Y) should be added
+                        to descriptors. Valid values include true and false.
+                    </td>
+                    <td>Optional</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>keepEmptyMethods</td>
+                    <td>
+                        A flag indicating whether method descriptors for
+                        methods with no attributes are kept.
+                    </td>
+                    <td>Optional</td>
+                    <td>false</td>
+                </tr>
+            </table>
+            <p>
+                The task also accepts child elements;
+            </p>
+            <ul>
+                <li>
+                    <a href="http://ant.apache.org/manual/CoreTypes/fileset.html">
+                    FileSet</a>: Defines the files processed by task.
+                </li>
+                <li>
+                    <a href="interception.html">Interceptor</a>: Defines
+                    interceptors applied to generation.
+                </li>
+                <li>
+                    <a href="filtering.html">Filter</a>: Defines filter
+                    applied to generation.
+                </li>
+            </ul>
+            <p>
+                The Interceptor and Filter elements both accept a name parameter
+                that defines the name of the class. The also contain a
+                "classpath" element which is a
+                <a href="http://ant.apache.org/manual/using.html#path">path-like</a>
+                structure that defines the classpath used to load either the
+                filter or interceptor.
+            </p>
+        </section>
+    </body>
+
+</document>
