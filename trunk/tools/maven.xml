@@ -2,9 +2,11 @@
 <project default="build" xmlns:maven="jelly:maven">
 
     <postGoal name="clean:clean">
+<!--
         <maven:maven descriptor="${basedir}/src/plugin-test/project.xml"
             goals="clean:clean"
             ignoreFailures="false"/>
+-->
     </postGoal>
 
     <goal name="build" prereqs="plugin:install"/>
