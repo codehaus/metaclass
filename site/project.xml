@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <project>
     <extend>${basedir}/../project.xml</extend>
-    <name>DNA</name>
-    <id>dna-site</id>
+    <name>MetaClass</name>
+    <id>metaclass-site</id>
 
     <shortDescription>MetaClass web site</shortDescription>
 
