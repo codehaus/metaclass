@@ -38,7 +38,7 @@
 
     <goal name="setupPlugin" prereqs="jar:jar">
         <ant:property name="artifact"
-            value="maven-metaclass-plugin-${pom.currentVersion}.jar"/>
+            value="${pom.artifactID}-plugin-${pom.currentVersion}.jar"/>
         <ant:echo message="Artifact: ${artifact}"/>
         <ant:copy file="${maven.build.dir}/${maven.final.name}.jar"
             toFile="${maven.build.dir}/${artifact}"/>
