@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project>
     <extend>${basedir}/../project.xml</extend>
-    <name>MetaClass</name>
+    <name>MetaClass Runtime</name>
     <artifactId>metaclass-runtime</artifactId>
 
     <shortDescription>Provides runtime access to attributes</shortDescription>
