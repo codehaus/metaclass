@@ -20,7 +20,7 @@
     <url>http://metaclass.codehaus.org/</url>
     <logo>/images/logo.gif</logo>
 
-    <distributionDirectory>/home/projects/metaclass/dist</distributionDirectory>
+    <distributionDirectory>/dist</distributionDirectory>
     <distributionSite>beaver.codehaus.org</distributionSite>
     <siteAddress>beaver.codehaus.org</siteAddress>
     <siteDirectory>/home/projects/metaclass/public_html</siteDirectory>
