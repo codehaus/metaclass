@@ -96,19 +96,12 @@ public class QDoxDescriptorParser
     {
         final String classname = javaClass.getFullyQualifiedName();
         final Attribute[] originalAttributes = buildAttributes( javaClass, interceptor );
-        final Attribute[] attributes =
-            interceptor.processClassAttributes( javaClass, originalAttributes );
+        final Attribute[] attributes = interceptor.processClassAttributes( javaClass, originalAttributes );
 
-        final FieldDescriptor[] fields =
-            buildFields( javaClass.getFields(), interceptor );
-        final MethodDescriptor[] methods =
-            buildMethods( javaClass.getMethods(), interceptor );
+        final FieldDescriptor[] fields = buildFields( javaClass.getFields(), interceptor );
+        final MethodDescriptor[] methods = buildMethods( javaClass.getMethods(), interceptor );
 
-        return new ClassDescriptor( classname,
-                                    attributes,
-                                    attributes,
-                                    fields,
-                                    methods );
+        return new ClassDescriptor( classname, attributes, attributes, fields, methods );
     }
 
     /**
@@ -121,10 +114,10 @@ public class QDoxDescriptorParser
     MethodDescriptor[] buildMethods( final JavaMethod[] methods,
                                      final QDoxAttributeInterceptor interceptor )
     {
-        final MethodDescriptor[] methodDescriptors = new MethodDescriptor[ methods.length ];
+        final MethodDescriptor[] methodDescriptors = new MethodDescriptor[methods.length];
         for( int i = 0; i < methods.length; i++ )
         {
-            methodDescriptors[ i ] = buildMethod( methods[ i ], interceptor );
+            methodDescriptors[i] = buildMethod( methods[i], interceptor );
         }
         return methodDescriptors;
     }
@@ -152,16 +145,10 @@ public class QDoxDescriptorParser
         }
 
         final Attribute[] originalAttributes = buildAttributes( method, interceptor );
-        final Attribute[] attributes =
-            interceptor.processMethodAttributes( method, originalAttributes );
-        final ParameterDescriptor[] parameters =
-            buildParameters( method.getParameters() );
+        final Attribute[] attributes = interceptor.processMethodAttributes( method, originalAttributes );
+        final ParameterDescriptor[] parameters = buildParameters( method.getParameters() );
 
-        return new MethodDescriptor( name,
-                                     type,
-                                     parameters,
-                                     attributes, 
-                                     attributes );
+        return new MethodDescriptor( name, type, parameters, attributes, attributes );
     }
 
     /**
@@ -172,13 +159,71 @@ public class QDoxDescriptorParser
      */
     ParameterDescriptor[] buildParameters( final JavaParameter[] parameters )
     {
-        final ParameterDescriptor[] descriptors =
-            new ParameterDescriptor[ parameters.length ];
+        final ParameterDescriptor[] descriptors = new ParameterDescriptor[parameters.length];
         for( int i = 0; i < parameters.length; i++ )
         {
-            descriptors[ i ] = buildParameter( parameters[ i ] );
+            descriptors[i] = buildParameter( parameters[i] );
         }
         return descriptors;
+    }
+
+    private String buildTypeName( Type type )
+    {
+        final String typeName = type.getValue();
+        if( type.getDimensions() == 0 )
+        {
+            return typeName;
+        }
+        else
+        {
+            String baseTypeName;
+            if( "boolean".equals( typeName ) )
+            {
+                baseTypeName = "Z";
+            }
+            else if( "byte".equals( typeName ) )
+            {
+                baseTypeName = "B";
+            }
+            else if( "char".equals( typeName ) )
+            {
+                baseTypeName = "C";
+            }
+            else if( "short".equals( typeName ) )
+            {
+                baseTypeName = "S";
+            }
+            else if( "int".equals( typeName ) )
+            {
+                baseTypeName = "I";
+            }
+            else if( "long".equals( typeName ) )
+            {
+                baseTypeName = "J";
+            }
+            else if( "float".equals( typeName ) )
+            {
+                baseTypeName = "F";
+            }
+            else if( "double".equals( typeName ) )
+            {
+                baseTypeName = "D";
+            }
+            else // it's an Object subclass
+            {
+                baseTypeName = "L" + typeName + ";";
+            }
+
+            StringBuffer dimensionTypeName = new StringBuffer();
+            for( int i = 0; i < type.getDimensions(); i++ )
+            {
+                dimensionTypeName.append( '[' );
+            }
+
+            dimensionTypeName.append( baseTypeName );
+
+            return dimensionTypeName.toString();
+        }
     }
 
     /**
@@ -190,7 +235,7 @@ public class QDoxDescriptorParser
     ParameterDescriptor buildParameter( final JavaParameter parameter )
     {
         final String name = parameter.getName();
-        final String value = parameter.getType().getValue();
+        final String value = buildTypeName( parameter.getType() );
         return new ParameterDescriptor( name, value );
     }
 
@@ -204,10 +249,10 @@ public class QDoxDescriptorParser
     FieldDescriptor[] buildFields( final JavaField[] fields,
                                    final QDoxAttributeInterceptor interceptor )
     {
-        final FieldDescriptor[] fieldDescriptors = new FieldDescriptor[ fields.length ];
+        final FieldDescriptor[] fieldDescriptors = new FieldDescriptor[fields.length];
         for( int i = 0; i < fields.length; i++ )
         {
-            fieldDescriptors[ i ] = buildField( fields[ i ], interceptor );
+            fieldDescriptors[i] = buildField( fields[i], interceptor );
         }
         return fieldDescriptors;
     }
@@ -219,18 +264,13 @@ public class QDoxDescriptorParser
      * @param interceptor the AttributeInterceptor
      * @return the FieldDescriptor
      */
-    FieldDescriptor buildField( final JavaField field,
-                                final QDoxAttributeInterceptor interceptor )
+    FieldDescriptor buildField( final JavaField field, final QDoxAttributeInterceptor interceptor )
     {
         final String name = field.getName();
-        final String type = field.getType().getValue();
+        final String type = buildTypeName( field.getType() );
         final Attribute[] originalAttributes = buildAttributes( field, interceptor );
-        final Attribute[] attributes =
-            interceptor.processFieldAttributes( field, originalAttributes );
-        return new FieldDescriptor( name,
-                                    type,
-                                    attributes,
-                                    attributes );
+        final Attribute[] attributes = interceptor.processFieldAttributes( field, originalAttributes );
+        return new FieldDescriptor( name, type, attributes, attributes );
     }
 
     /**
@@ -248,15 +288,14 @@ public class QDoxDescriptorParser
         final DocletTag[] tags = javaClass.getTags();
         for( int i = 0; i < tags.length; i++ )
         {
-            final Attribute originalAttribute = buildAttribute( tags[ i ] );
-            final Attribute attribute =
-                interceptor.processClassAttribute( javaClass, originalAttribute );
+            final Attribute originalAttribute = buildAttribute( tags[i] );
+            final Attribute attribute = interceptor.processClassAttribute( javaClass, originalAttribute );
             if( null != attribute )
             {
                 attributes.add( attribute );
             }
         }
-        return (Attribute[])attributes.toArray( new Attribute[ attributes.size() ] );
+        return (Attribute[]) attributes.toArray( new Attribute[attributes.size()] );
     }
 
     /**
@@ -274,15 +313,14 @@ public class QDoxDescriptorParser
         final DocletTag[] tags = method.getTags();
         for( int i = 0; i < tags.length; i++ )
         {
-            final Attribute originalAttribute = buildAttribute( tags[ i ] );
-            final Attribute attribute =
-                interceptor.processMethodAttribute( method, originalAttribute );
+            final Attribute originalAttribute = buildAttribute( tags[i] );
+            final Attribute attribute = interceptor.processMethodAttribute( method, originalAttribute );
             if( null != attribute )
             {
                 attributes.add( attribute );
             }
         }
-        return (Attribute[])attributes.toArray( new Attribute[ attributes.size() ] );
+        return (Attribute[]) attributes.toArray( new Attribute[attributes.size()] );
     }
 
     /**
@@ -300,15 +338,14 @@ public class QDoxDescriptorParser
         final DocletTag[] tags = field.getTags();
         for( int i = 0; i < tags.length; i++ )
         {
-            final Attribute originalAttribute = buildAttribute( tags[ i ] );
-            final Attribute attribute =
-                interceptor.processFieldAttribute( field, originalAttribute );
+            final Attribute originalAttribute = buildAttribute( tags[i] );
+            final Attribute attribute = interceptor.processFieldAttribute( field, originalAttribute );
             if( null != attribute )
             {
                 attributes.add( attribute );
             }
         }
-        return (Attribute[])attributes.toArray( new Attribute[ attributes.size() ] );
+        return (Attribute[]) attributes.toArray( new Attribute[attributes.size()] );
     }
 
     /**
@@ -436,8 +473,7 @@ public class QDoxDescriptorParser
             }
         }
 
-        if( PARSE_KEY_START != state &&
-            PARSE_END != state )
+        if( PARSE_KEY_START != state && PARSE_END != state )
         {
             return null;
         }
