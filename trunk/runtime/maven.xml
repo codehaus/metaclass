@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
-<project default="main">
-
-    <goal name="main" prereqs="build"/>
+<project default="build">
 
     <goal name="build" prereqs="jar:install"/>
 
     <goal name="deploy" prereqs="jar:deploy"/>
-
 
 </project>

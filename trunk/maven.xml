@@ -1,9 +1,5 @@
-<project default="main"
+<project default="build"
     xmlns:maven="jelly:maven">
-
-    <goal name="main">
-        <attainGoal name="build"/>
-    </goal>
 
     <goal name="clean-all">
         <echo message="Cleaning all components"/>
