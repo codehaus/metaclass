@@ -6,8 +6,7 @@
 
     <goal name="deploy" prereqs="site:deploy"/>
 
-
-    <preGoal name="java:compile">
+    <preGoal name="build:start">
         <attainGoal name="aggregate-components"/>
     </preGoal>
 

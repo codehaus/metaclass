@@ -27,7 +27,7 @@ import org.w3c.dom.Document;
  * @author Peter Donald
  * @version $Revision: 1.13 $ $Date: 2003/11/27 08:09:53 $
  */
-public class DOMMetaClassDeserializer
+public final class DOMMetaClassDeserializer
 {
     /**
      * Build a ClassDescriptor from a Document.
