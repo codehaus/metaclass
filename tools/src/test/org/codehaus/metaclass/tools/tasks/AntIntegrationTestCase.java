@@ -57,22 +57,22 @@ public class AntIntegrationTestCase
         final String buildSource =
             "<project default=\"main\" basedir=\".\">\n" +
             "    <target name=\"main\">\n" +
-            "        <taskdef name=\"mc_register\"\n" +
+            "        <taskdef name=\"metaclass_register\"\n" +
             "           classname=\"org.codehaus.metaclass.tools.tasks.RegisterMetaClassLibTask\"/>\n" +
-            "        <mc_register/>\n" +
+            "        <metaclass_register/>\n" +
             "\n" +
-            "        <mc_interceptorSet id=\"metaclass.interceptors\"/>\n" +
+            "        <metaclass_interceptorSet id=\"metaclass.interceptors\"/>\n" +
             "\n" +
-            "        <mc_interceptorSet id=\"test.interceptors\">\n" +
+            "        <metaclass_interceptorSet id=\"test.interceptors\">\n" +
             "            <interceptor \n" +
             "                name=\"org.codehaus.metaclass.tools.qdox.DefaultQDoxAttributeInterceptor\"/>\n" +
-            "        </mc_interceptorSet>\n" +
+            "        </metaclass_interceptorSet>\n" +
             "\n" +
-            "        <mc_addToInterceptorSet\n" +
+            "        <metaclass_addToInterceptorSet\n" +
             "            dest=\"metaclass.interceptors\"\n" +
             "            source=\"test.interceptors\"/>\n" +
             "\n" +
-            "        <mc_generate format=\"binary\" destDir=\"" +
+            "        <metaclass_generate format=\"binary\" destDir=\"" +
             destDirectory +
             "\">\n" +
             "            <interceptorSet refid=\"metaclass.interceptors\"/>\n" +
@@ -81,7 +81,7 @@ public class AntIntegrationTestCase
             "\">\n" +
             "                <include name=\"**/*.java\"/>\n" +
             "            </fileset>\n" +
-            "        </mc_generate>\n" +
+            "        </metaclass_generate>\n" +
             "    </target>\n" +
             "</project>\n";
 

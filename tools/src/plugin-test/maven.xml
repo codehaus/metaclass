@@ -5,12 +5,12 @@
     default="testPlugin">
 
     <preGoal name="metaclass:generate">
-        <ant:mc_interceptorSet id="maven.dna.interceptors">
+        <ant:metaclass_interceptorSet id="maven.dna.interceptors">
             <ant:interceptor
                 name="org.codehaus.metaclass.tools.qdox.DefaultQDoxAttributeInterceptor"/>
-        </ant:mc_interceptorSet>
+        </ant:metaclass_interceptorSet>
 
-        <ant:mc_addToInterceptorSet
+        <ant:metaclass_addToInterceptorSet
             dest="maven.metaclass.interceptors"
             source="maven.dna.interceptors"/>
     </preGoal>
