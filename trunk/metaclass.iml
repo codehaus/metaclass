@@ -17,6 +17,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Junit" level="application" />
+    <orderEntry type="library" name="JMock" level="application" />
+    <orderEntry type="library" name="QDox" level="application" />
+    <orderEntry type="library" name="Ant" level="application" />
+    <orderEntry type="library" name="ASM" level="application" />
   </component>
 </module>
 
