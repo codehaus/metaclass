@@ -24,6 +24,10 @@
                     Rework parameter and field types to support array types
                     (Submitted by Craig Mcmillan).
                 </li>
+                <li>
+                    Fix NPE when attempting to get descriptors for Classes w/o
+                    a ClassLoader (such as classes shipped with the JDK)
+                </li>
             </ul>
         </section>
     </body>
