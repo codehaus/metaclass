@@ -11,9 +11,10 @@
         <attainGoal name="build"/>
     </goal>
 
-    <goal name="build">
-    	<attainGoal name="release:build-distribution-bin"/>
+    <goal name="build" prereqs="release:build-distribution-bin">
+<!--
     	<attainGoal name="release:build-distribution-src"/>
+-->
     </goal>
 
     <preGoal name="release:setup-distribution-bin">
@@ -59,14 +60,10 @@
     </postGoal>
 
 
-    <goal name="deploy">
-    	<attainGoal name="release:deploy-distribution-bin"/>
+    <goal name="deploy" prereqs="build,release:deploy-distribution-bin">
+<!--
     	<attainGoal name="release:deploy-distribution-src"/>
+-->
     </goal>
-
-    <goal name="clean">
-    	<attainGoal name="clean:clean"/>
-    </goal>
-
 
 </project>
