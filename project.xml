@@ -79,6 +79,14 @@
         </license>
     </licenses>
 
+    <dependencies>
+        <dependency> <!-- for loading attributes from .class files -->
+            <groupId>asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>1.4</version>
+        </dependency>
+    </dependencies>
+
     <reports>
         <report>maven-jdepend-plugin</report>
         <report>maven-checkstyle-plugin</report>
