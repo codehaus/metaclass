@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <title>MetaClass Release 1.2</title>
+        <author>Peter Donald</author>
+    </properties>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                This is the thrird release of MetaClass. This is a bug
+                fix release. The release can be downloaded from;
+            </p>
+            <ul>
+                <li>
+                    <a href="http://dist.codehaus.org/metaclass/distributions">Codehaus Distribution Server</a>
+                </li>
+            </ul>
+        </section>
+        <section name="Changes">
+            <ul>
+                <li>
+                    Rework parameter and field types to support array types
+                    (Submitted by Craig Mcmillan).
+                </li>
+            </ul>
+        </section>
+    </body>
+
+</document>
