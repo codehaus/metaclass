@@ -28,6 +28,7 @@
         <maven:reactor
             basedir="${basedir}"
             includes="*/project.xml"
+	    excludes="distribution/project.xml,site/project.xml" 
             goals="clean,deploy"
             banner="Deploying"
             ignoreFailures="false" />
