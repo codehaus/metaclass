@@ -11,7 +11,7 @@
 
     <groupId>metaclass</groupId>
     <!--
-      Have to bump version in metaclass-tools and plugin-test if this changes 
+      Have to bump version in metaclass-tools and plugin-test if this changes
     -->
     <currentVersion>1.2-rc1-dev</currentVersion>
     <package>org.codehaus.metaclass</package>
@@ -73,6 +73,12 @@
             <timezone>+10</timezone>
         </developer>
     </developers>
+
+    <contributors>
+        <contributor>
+            <name>Craig Mcmillan</name>
+        </contributor>
+    </contributors>
 
     <licenses>
         <license>
