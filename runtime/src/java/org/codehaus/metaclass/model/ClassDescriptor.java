@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @author Peter Donald
  * @version $Revision: 1.11 $ $Date: 2003/11/27 08:09:53 $
  */
-public class ClassDescriptor
+public final class ClassDescriptor
     extends FeatureDescriptor
     implements Serializable
 {
