@@ -20,8 +20,8 @@
     <url>http://metaclass.codehaus.org/</url>
     <logo>/images/logo.gif</logo>
 
-    <distributionDirectory>/www/dist.codehaus.org</distributionDirectory>
-    <distributionSite>codehaus.org</distributionSite>
+    <distributionDirectory>/home/projects/metaclass/dist</distributionDirectory>
+    <distributionSite>beaver.codehaus.org</distributionSite>
     <siteAddress>beaver.codehaus.org</siteAddress>
     <siteDirectory>/home/projects/metaclass/public_html</siteDirectory>
 
