@@ -11,7 +11,13 @@
             <p>
                 This is the first release of MetaClass, the runtime
                 attribute toolkit. The release was historically available
-                at sourceforge but has since been discommisioned.
+                at sourceforge but has since been discommissioned.
+            </p>
+            <p>
+                MetaClass releases are now available at 
+	            <ul>
+    	            <li><a href="http://dist.codehaus.org/metaclass/jars">Codehaus Distribution Server</a></li>
+        	    </ul>
             </p>
         </section>
     </body>

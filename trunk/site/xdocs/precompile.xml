@@ -83,9 +83,9 @@
 <source><![CDATA[
 <!-- define the custom task -->
 <taskdef name="metaclassGen"
-    classname="org.realityforge.metaclass.tools.tasks.GenerateClassDescriptorsTask">
+    classname="org.codehaus.metaclass.tools.tasks.GenerateClassDescriptorsTask">
     <classpath>
-        <pathelement location="spice-metaclass-1.0.jar"/>
+        <pathelement location="metaclass-runtime-1.0.jar"/>
         <pathelement location="qdox-1.1.jar"/>
     </classpath>
 </taskdef>

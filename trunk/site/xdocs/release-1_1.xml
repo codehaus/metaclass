@@ -17,7 +17,7 @@
             </p>
             <ul>
                 <li>
-                    <a href="http://dist.codehaus.org/metaclass/distributions">Codehaus DIstribution Server</a>
+                    <a href="http://dist.codehaus.org/metaclass/jars">Codehaus Distribution Server</a>
                 </li>
             </ul>
         </section>
@@ -47,13 +47,13 @@
                 </li>
                 <li>
                     Moved the following classes into the package
-                    <tt>org.realityforge.metaclass.introspector</tt> so that
+                    <tt>org.codehaus.metaclass.introspector</tt> so that
                     now all the packages have clean dependency lines and there
                     is no circular dependencies. The classes moved included;
-                    <tt>org.realityforge.metaclass.MetaClassIntrospector</tt>,
-                    <tt>org.realityforge.metaclass.MetaClassException</tt>,
-                    <tt>org.realityforge.metaclass.io.DefaultMetaClassAccessor</tt>
-                    and <tt>org.realityforge.metaclass.io.MetaClassAccessor</tt>.
+                    <tt>org.codehaus.metaclass.MetaClassIntrospector</tt>,
+                    <tt>org.codehaus.metaclass.MetaClassException</tt>,
+                    <tt>org.codehaus.metaclass.io.DefaultMetaClassAccessor</tt>
+                    and <tt>org.codehaus.metaclass.io.MetaClassAccessor</tt>.
                 </li>
                 <li>
                     Removed constants pertaining to the serialized format
