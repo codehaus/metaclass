@@ -13,7 +13,7 @@
     <!--
       Have to bump version in metaclass-tools and plugin-test if this changes 
     -->
-    <currentVersion>1.0-rc3</currentVersion>
+    <currentVersion>1.1-rc3</currentVersion>
     <package>org.codehaus.metaclass</package>
 
     <issueTrackingUrl>http://jira.codehaus.org/secure/BrowseProject.jspa?id=10290</issueTrackingUrl>
