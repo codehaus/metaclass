@@ -17,12 +17,19 @@
             </p>
             <ul>
                 <li>
-                    <a href="http://sourceforge.net/project/showfiles.php?group_id=67448&amp;release_id=XXXXXXXXXXXXX">SourceForge Mirrors</a>
+                    <a href="http://dist.codehaus.org/metaclass/distributions">Codehaus DIstribution Server</a>
                 </li>
             </ul>
         </section>
         <section name="Changes">
             <ul>
+                <li>
+                    Support reading and writing descriptors as part of the .class
+                    file. The aim of this technique is to reduce the chance that
+                    descriptors and .class files will get out of sync. MetaClass will
+                    attempt to load descriptors from .class files prior to attempting
+                    to load descriptors that sit side-by-side the .class file.
+                </li>
                 <li>
                     Removed the notion of Package-level attributes
                     and corresponding PackageDescriptor. This was removed
