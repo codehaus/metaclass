@@ -101,8 +101,16 @@ public final class MetaClassIntrospector
                             final ClassLoader classLoader )
         throws MetaClassException
     {
-        return c_cachingAccessor.getClassDescriptor( classname,
-                                                     classLoader,
-                                                     c_wrapperAccessor );
+        if( null == classLoader )
+        {
+            final String msg = "Unable to load ClassDescriptor for " + classname + " without a classLoader";
+            throw new MetaClassException( msg );
+        }
+        else
+        {
+            return c_cachingAccessor.getClassDescriptor( classname,
+                                                         classLoader,
+                                                         c_wrapperAccessor );
+        }
     }
 }
